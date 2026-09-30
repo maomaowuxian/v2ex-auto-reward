@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>V2EX 自动领奖励</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <p class="eyebrow">V2EX Daily Reward</p>
+        <h1>每天自动领，不用再记着打开网页</h1>
+        <p class="subtitle" id="statusMessage">正在读取当前状态…</p>
+      </section>
+
+      <section class="status-card">
+        <div>
+          <p class="label">当前状态</p>
+          <p class="status-pill" id="statusPill">加载中</p>
+        </div>
+        <div class="meta-grid">
+          <div>
+            <p class="label">最近一次执行</p>
+            <p class="value" id="lastRunAt">还没有</p>
+          </div>
+          <div>
+            <p class="label">最近一次领取</p>
+            <p class="value" id="lastClaim">还没有</p>
+          </div>
+          <div>
+            <p class="label">自动执行</p>
+            <p class="value" id="scheduleText">加载中</p>
+          </div>
+          <div>
+            <p class="label">下一次执行</p>
+            <p class="value" id="nextRunAt">加载中</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="actions">
+        <button id="loginButton" class="primary">登录 V2EX</button>
+        <button id="claimButton">立即领取一次</button>
+        <button id="claimShowButton">打开浏览器领取</button>
+        <button id="logsButton" class="ghost">打开日志</button>
+      </section>
+
+      <section class="settings-card">
+        <div class="settings-head">
+          <h2>自动执行设置</h2>
+          <p>改完会立即保存，下次自动按你的时间执行。</p>
+        </div>
+        <label class="switch-row">
+          <span>启用每天自动执行</span>
+          <input id="scheduleEnabled" type="checkbox" />
+        </label>
+        <div class="time-row">
+          <label>
+            每天执行时间
+            <input id="scheduleTime" type="time" />
+          </label>
+          <button id="saveSettingsButton" class="primary">保存时间</button>
+        </div>
+        <label class="switch-row">
+          <span>开机后自动启动 App</span>
+          <input id="launchAtLogin" type="checkbox" />
+        </label>
+        <p class="hint" id="launchHint">打包成正式 App 后，这个开关才会真正生效。</p>
+        <p class="version" id="appVersion">版本读取中…</p>
+      </section>
+    </main>
+
+    <script src="./renderer.js"></script>
+  </body>
+</html>

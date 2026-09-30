@@ -1,0 +1,53 @@
+{
+  "name": "v2ex-auto-reward",
+  "version": "1.0.4",
+  "description": "Automatically claim the daily V2EX reward on macOS.",
+  "private": true,
+  "type": "commonjs",
+  "main": "src/main.js",
+  "scripts": {
+    "app": "electron .",
+    "build:icon": "node scripts/build-icon.js",
+    "build:mac": "electron-builder --mac dmg",
+    "cleanup:build": "node scripts/cleanup-build-artifacts.js",
+    "login": "node src/login.js",
+    "prebuild:mac": "npm run build:icon",
+    "postbuild:mac": "npm run cleanup:build",
+    "claim": "node src/claim.js",
+    "claim:show": "node src/claim.js --show-browser",
+    "start": "electron ."
+  },
+  "dependencies": {
+    "playwright": "^1.53.0"
+  },
+  "devDependencies": {
+    "electron": "^31.7.7",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.rayma.v2ex-auto-reward",
+    "productName": "V2EX自动领奖励",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "build/**/*",
+      "scripts/**/*",
+      "src/**/*",
+      "package.json",
+      "node_modules/**/*"
+    ],
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "category": "public.app-category.productivity",
+      "icon": "build/icon.icns"
+    },
+    "dmg": {
+      "sign": false
+    }
+  },
+  "author": "Ray Ma"
+}
